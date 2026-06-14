@@ -1,0 +1,46 @@
+[project]
+name = "ai-career-navigator"
+version = "0.1.0"
+description = "Applied AI engineering project for analyzing AI/Data Science career and job market trends"
+readme = "README.md"
+authors = [
+    { name = "Donald Hattier", email = "88913622+Dhattier@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.137.0",
+    "pydantic-settings>=2.14.1",
+    "uvicorn>=0.49.0",
+]
+
+[project.scripts]
+ai-career-nav = "ai_career_navigator:main"
+
+[build-system]
+requires = ["uv_build>=0.11.3,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "mypy>=2.1.0",
+    "pre-commit>=4.6.0",
+    "pytest>=9.1.0",
+    "ruff>=0.15.17",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"
