@@ -3,10 +3,10 @@ from fastapi.testclient import TestClient
 from ai_career_navigator.main import app
 
 
-def test_health_endpoint() -> None:
+def test_echo_endpoint() -> None:
     client = TestClient(app)
 
-    response = client.get("/api/v1/health")
+    response = client.post("/api/v1/echo", json={"message": "hello"})
 
     assert response.status_code == 200
-    assert response.json() == {"status": "healthy"}
+    assert response.json() == {"message": "hello"}
